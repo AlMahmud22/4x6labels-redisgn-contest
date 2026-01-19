@@ -193,57 +193,202 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Categories - Minimalist Industrial Style */}
-      <section className="py-32 bg-white">
+      {/* Featured Categories - Premium Animated Style with Background Images */}
+      <section className="py-32 bg-gradient-to-b from-white to-slate-50">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col mb-16 max-w-3xl">
+          <div className="flex flex-col mb-16 max-w-3xl mx-auto text-center">
             <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="text-blue-600 font-black uppercase tracking-[0.4em] text-[10px] mb-4 block"
+              className="text-blue-600 font-black uppercase tracking-[0.5em] text-[10px] mb-4 block"
             >
               System Selection
             </motion.span>
-            <h2 className="font-heading font-black text-4xl lg:text-6xl tracking-tighter uppercase mb-6 text-slate-950 leading-none">
-              Featured <br /> Categories
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <motion.div 
-              whileHover={{ y: -10, scale: 1.01 }}
+            <motion.h2 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="group p-12 bg-slate-50 rounded-[3rem] border border-slate-100 hover:bg-slate-950 transition-all duration-700 relative overflow-hidden"
+              className="font-heading font-black text-4xl lg:text-7xl tracking-tighter uppercase mb-6 text-slate-950 leading-[0.9]"
             >
-              <div className="relative z-10">
-                <h3 className="font-heading font-black text-3xl mb-4 group-hover:text-white transition-colors tracking-tighter uppercase">Direct Thermal Labels</h3>
-                <p className="text-slate-600 group-hover:text-slate-400 mb-10 font-bold leading-relaxed text-base max-w-sm">
-                  No ink, no ribbon – just sharp, fade-resistant prints for short-term use. Ideal for warehouses, retail, and shipping labels.
-                </p>
-                <Button size="lg" className="rounded-full bg-blue-600 hover:bg-blue-500 font-black text-[10px] uppercase tracking-widest px-8 h-14">Shop Now</Button>
-              </div>
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-blue-600/5 group-hover:bg-blue-600/10 rounded-full blur-3xl transition-colors duration-700"></div>
-            </motion.div>
-
-            <motion.div 
-              whileHover={{ y: -10, scale: 1.01 }}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              Featured <br /> Categories
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="group p-12 bg-slate-50 rounded-[3rem] border border-slate-100 hover:bg-slate-950 transition-all duration-700 relative overflow-hidden"
+              className="text-slate-500 font-bold text-base"
             >
-              <div className="relative z-10">
-                <h3 className="font-heading font-black text-3xl mb-4 group-hover:text-white transition-colors tracking-tighter uppercase">Thermal Transfer Labels</h3>
-                <p className="text-slate-600 group-hover:text-slate-400 mb-10 font-bold leading-relaxed text-base max-w-sm">
+              Choose the perfect label solution for your business needs
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            {/* Category 1: Direct Thermal Labels */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              whileHover={{ y: -8 }}
+              className="group relative overflow-hidden rounded-[2.5rem] border-2 border-slate-200 hover:border-blue-400 transition-all duration-700 cursor-pointer shadow-lg hover:shadow-2xl"
+            >
+              {/* Background Image with Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 via-amber-300 to-orange-400">
+                <img 
+                  src="/images/category-direct-thermal.png" 
+                  alt="Direct Thermal Labels"
+                  className="w-full h-full object-contain opacity-60 group-hover:opacity-70 group-hover:scale-105 transition-all duration-1000"
+                  style={{ transform: 'scaleX(-1)' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/30 to-transparent"></div>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 p-10 lg:p-12 flex flex-col justify-end min-h-[500px]">
+                {/* Floating Badge */}
+                <motion.div 
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, type: "spring" }}
+                  className="absolute top-8 right-8 bg-blue-600 text-white px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl"
+                >
+                  Popular Choice
+                </motion.div>
+
+                {/* Title with Animation */}
+                <motion.h3 
+                  className="font-heading font-black text-3xl lg:text-4xl mb-4 text-white tracking-tighter uppercase leading-tight group-hover:scale-105 transition-transform duration-500 origin-left"
+                >
+                  Direct Thermal <br />Labels
+                </motion.h3>
+                
+                {/* Description */}
+                <p className="text-slate-200 group-hover:text-white mb-8 font-bold leading-relaxed text-base max-w-md transition-colors duration-500">
+                  No ink, no ribbon – just sharp, fade-resistant prints for short-term use. Ideal for warehouses, retail, and shipping labels.
+                </p>
+
+                {/* Features List */}
+                <ul className="space-y-2 mb-8">
+                  {["No Ribbon Required", "Cost Effective", "Fast Printing"].map((feature, idx) => (
+                    <motion.li 
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 + idx * 0.1 }}
+                      className="flex items-center gap-3 text-sm font-black text-white/90 group-hover:text-white transition-colors"
+                    >
+                      <div className="w-2 h-2 rounded-full bg-blue-400 group-hover:scale-150 transition-transform"></div>
+                      {feature}
+                    </motion.li>
+                  ))}
+                </ul>
+
+                {/* CTA Button */}
+                <Button 
+                  size="lg" 
+                  className="rounded-full bg-white text-slate-950 hover:bg-blue-600 hover:text-white font-black text-[11px] uppercase tracking-widest px-10 h-14 shadow-xl group-hover:shadow-2xl group-hover:scale-105 transition-all duration-500 w-fit"
+                >
+                  Shop Now
+                  <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+
+              {/* Animated Corner Accent */}
+              <motion.div 
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 90, 0]
+                }}
+                transition={{ duration: 20, repeat: Infinity }}
+                className="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl"
+              />
+            </motion.div>
+
+            {/* Category 2: Thermal Transfer Labels */}
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              whileHover={{ y: -8 }}
+              className="group relative overflow-hidden rounded-[2.5rem] border-2 border-slate-200 hover:border-indigo-400 transition-all duration-700 cursor-pointer shadow-lg hover:shadow-2xl"
+            >
+              {/* Background Image with Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-sky-400 to-cyan-400">
+                <img 
+                  src="/images/category-thermal-transfer.png" 
+                  alt="Thermal Transfer Labels"
+                  className="w-full h-full object-contain opacity-60 group-hover:opacity-70 group-hover:scale-105 transition-all duration-1000"
+                  style={{ transform: 'scaleX(-1)' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/30 to-transparent"></div>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 p-10 lg:p-12 flex flex-col justify-end min-h-[500px]">
+                {/* Floating Badge */}
+                <motion.div 
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, type: "spring" }}
+                  className="absolute top-8 right-8 bg-indigo-600 text-white px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl"
+                >
+                  Industrial Grade
+                </motion.div>
+
+                {/* Title with Animation */}
+                <motion.h3 
+                  className="font-heading font-black text-3xl lg:text-4xl mb-4 text-white tracking-tighter uppercase leading-tight group-hover:scale-105 transition-transform duration-500 origin-left"
+                >
+                  Thermal Transfer <br />Labels
+                </motion.h3>
+                
+                {/* Description */}
+                <p className="text-slate-200 group-hover:text-white mb-8 font-bold leading-relaxed text-base max-w-md transition-colors duration-500">
                   Designed for long-lasting durability, these labels use a ribbon for precise, smudge-resistant prints; perfect for industrial applications.
                 </p>
-                <Button size="lg" className="rounded-full bg-blue-600 hover:bg-blue-500 font-black text-[10px] uppercase tracking-widest px-8 h-14">Shop Now</Button>
+
+                {/* Features List */}
+                <ul className="space-y-2 mb-8">
+                  {["Long-Lasting Durability", "Chemical Resistant", "Fade Proof"].map((feature, idx) => (
+                    <motion.li 
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.6 + idx * 0.1 }}
+                      className="flex items-center gap-3 text-sm font-black text-white/90 group-hover:text-white transition-colors"
+                    >
+                      <div className="w-2 h-2 rounded-full bg-indigo-400 group-hover:scale-150 transition-transform"></div>
+                      {feature}
+                    </motion.li>
+                  ))}
+                </ul>
+
+                {/* CTA Button */}
+                <Button 
+                  size="lg" 
+                  className="rounded-full bg-white text-slate-950 hover:bg-indigo-600 hover:text-white font-black text-[11px] uppercase tracking-widest px-10 h-14 shadow-xl group-hover:shadow-2xl group-hover:scale-105 transition-all duration-500 w-fit"
+                >
+                  Shop Now
+                  <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
               </div>
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-indigo-600/5 group-hover:bg-indigo-600/10 rounded-full blur-3xl transition-colors duration-700"></div>
+
+              {/* Animated Corner Accent */}
+              <motion.div 
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  rotate: [0, -90, 0]
+                }}
+                transition={{ duration: 20, repeat: Infinity }}
+                className="absolute -bottom-20 -left-20 w-64 h-64 bg-indigo-600/20 rounded-full blur-3xl"
+              />
             </motion.div>
           </div>
         </div>
