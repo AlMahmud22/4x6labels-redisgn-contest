@@ -18,18 +18,22 @@ export default function Home() {
   ];
 
   const brands = [
-    { name: "McDonald's", logo: "/images/companies/mcD.png" },
-    { name: "Dunkin' Donuts", logo: "/images/companies/dunkindonuts.png" },
-    { name: "US Food Service", logo: "/images/companies/usfoodservice.png" },
-    { name: "Subway", logo: "/images/companies/subway.png" },
-    { name: "Grainger", logo: "/images/companies/grainger.png" },
-    { name: "Boeing", logo: "/images/companies/boeing.png" },
-    { name: "US Postal Service", logo: "/images/companies/united states postal service.png" },
-    { name: "Sysco", logo: "/images/companies/sysco.png" },
-    { name: "HP", logo: "/images/companies/hp.png" },
-    { name: "INTUIT", logo: "/images/companies/intuit.png" },
-    { name: "The Home Depot", logo: "/images/companies/the home depot.png" }
+    { name: "McDonald's", logo: "/images/mcD.png" },
+    { name: "Dunkin' Donuts", logo: "/images/dunkindonuts.png" },
+    { name: "US Food Service", logo: "/images/usfoodservice.png" },
+    { name: "Subway", logo: "/images/subway.png" },
+    { name: "Grainger", logo: "/images/grainger.png" },
+    { name: "Boeing", logo: "/images/boeing.png" },
+    { name: "US Postal Service", logo: "/images/united states postal service.png" },
+    { name: "Sysco", logo: "/images/sysco.png" },
+    { name: "HP", logo: "/images/hp.png" },
+    { name: "INTUIT", logo: "/images/intuit.png" },
+    { name: "The Home Depot", logo: "/images/the home depot.png" }
   ];
+
+  // Split brands into two rows (50% each)
+  const brandsFirstRow = brands.slice(0, Math.ceil(brands.length / 2)); // First 6 brands
+  const brandsSecondRow = brands.slice(Math.ceil(brands.length / 2)); // Last 5 brands
 
   const faqs = [
     { q: "Can I use 4x6 labels for USPS?", a: "Yes, our 4x6 labels are perfectly sized and compatible with USPS Priority Mail and other postal services." },
@@ -425,23 +429,23 @@ export default function Home() {
         </div>
 
         {/* Infinite Scrolling Carousel */}
-        <div className="relative">
+        <div className="relative max-w-[1440px] mx-auto">
           {/* Gradient Overlays */}
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
 
-          {/* Scrolling Container */}
+          {/* Scrolling Container - First Row */}
           <div className="flex overflow-hidden">
             <motion.div 
-              animate={{ x: [0, -1920] }}
+              animate={{ x: [0, -1344] }}
               transition={{ 
-                duration: 50, 
+                duration: 30, 
                 repeat: Infinity, 
                 ease: "linear" 
               }}
               className="flex items-center gap-16 py-8 px-8 shrink-0"
             >
-              {[...brands, ...brands, ...brands].map((brand, i) => (
+              {[...brandsFirstRow, ...brandsFirstRow, ...brandsFirstRow, ...brandsFirstRow].map((brand, i) => (
                 <motion.div 
                   key={i}
                   whileHover={{ scale: 1.1 }}
@@ -450,7 +454,8 @@ export default function Home() {
                   <img 
                     src={brand.logo} 
                     alt={brand.name} 
-                    className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-500" 
+                    className="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 drop-shadow-md group-hover:drop-shadow-xl" 
+                    style={{ filter: 'brightness(1.05) drop-shadow(0 0 8px rgba(59, 130, 246, 0.15))' }}
                   />
                 </motion.div>
               ))}
@@ -460,15 +465,15 @@ export default function Home() {
           {/* Second Row - Reverse Direction */}
           <div className="flex overflow-hidden mt-6">
             <motion.div 
-              animate={{ x: [-1920, 0] }}
+              animate={{ x: [-1344, 0] }}
               transition={{ 
-                duration: 50, 
+                duration: 30, 
                 repeat: Infinity, 
                 ease: "linear" 
               }}
               className="flex items-center gap-16 py-8 px-8 shrink-0"
             >
-              {[...brands, ...brands, ...brands].reverse().map((brand, i) => (
+              {[...brandsSecondRow, ...brandsSecondRow, ...brandsSecondRow, ...brandsSecondRow].map((brand, i) => (
                 <motion.div 
                   key={i}
                   whileHover={{ scale: 1.1 }}
@@ -477,7 +482,8 @@ export default function Home() {
                   <img 
                     src={brand.logo} 
                     alt={brand.name} 
-                    className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-500" 
+                    className="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 drop-shadow-md group-hover:drop-shadow-xl"
+                    style={{ filter: 'brightness(1.05) drop-shadow(0 0 8px rgba(59, 130, 246, 0.15))' }} 
                   />
                 </motion.div>
               ))}
