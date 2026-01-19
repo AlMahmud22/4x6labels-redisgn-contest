@@ -18,17 +18,17 @@ export default function Home() {
   ];
 
   const brands = [
-    { name: "McDonalds", logo: "/images/mcD.png" },
-    { name: "Dunkin Donuts", logo: "/images/dunkindonuts.png" },
-    { name: "US Food Service", logo: "/images/usfoodservice.png" },
-    { name: "Subway", logo: "/images/subway.png" },
-    { name: "Grainger", logo: "/images/grainger.png" },
-    { name: "Boeing", logo: "/images/boeing.png" },
-    { name: "US Postal Service", logo: "/images/united states postal service.png" },
-    { name: "Sysco", logo: "/images/sysco.png" },
-    { name: "HP", logo: "/images/hp.png" },
-    { name: "INTUIT", logo: "/images/intuit.png" },
-    { name: "The Home Depot", logo: "/images/the home depot.png" }
+    { name: "McDonald's", logo: "/images/companies/mcD.png" },
+    { name: "Dunkin' Donuts", logo: "/images/companies/dunkindonuts.png" },
+    { name: "US Food Service", logo: "/images/companies/usfoodservice.png" },
+    { name: "Subway", logo: "/images/companies/subway.png" },
+    { name: "Grainger", logo: "/images/companies/grainger.png" },
+    { name: "Boeing", logo: "/images/companies/boeing.png" },
+    { name: "US Postal Service", logo: "/images/companies/united states postal service.png" },
+    { name: "Sysco", logo: "/images/companies/sysco.png" },
+    { name: "HP", logo: "/images/companies/hp.png" },
+    { name: "INTUIT", logo: "/images/companies/intuit.png" },
+    { name: "The Home Depot", logo: "/images/companies/the home depot.png" }
   ];
 
   const faqs = [
@@ -394,36 +394,119 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Brand Logos - Infinite Marquee */}
-      <section className="py-16 bg-white overflow-hidden">
-        <div className="container mx-auto px-6 mb-12 flex flex-col items-center">
+      {/* 5. Brand Logos - Premium Infinite Carousel */}
+      <section className="py-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden border-y border-slate-100">
+        <div className="container mx-auto px-6 mb-16 flex flex-col items-center">
           <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-[10px] font-black uppercase tracking-[0.5em] text-blue-600 mb-2"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="text-[10px] font-black uppercase tracking-[0.5em] text-blue-600 mb-3 block"
           >
-            Institutional Trust
+            Trusted Worldwide
           </motion.span>
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-2xl font-black uppercase tracking-tighter text-slate-950"
+            viewport={{ once: true }}
+            className="text-3xl lg:text-4xl font-black uppercase tracking-tighter text-slate-950 mb-4 text-center"
           >
-            More than 1,000+ companies work with us
+            Companies We Work With
           </motion.h3>
-        </div>
-        <div className="relative flex overflow-x-hidden group">
-          <motion.div 
-            animate={{ x: [0, -1000] }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="flex items-center gap-20 py-4 px-12 group-hover:[animation-play-state:paused]"
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-slate-500 font-bold text-base text-center"
           >
-            {[...brands, ...brands].map((brand, i) => (
-              <div key={i} className="flex items-center justify-center grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-500 cursor-default">
-                 <img src={brand.logo} alt={brand.name} className="h-12 w-auto object-contain" />
-              </div>
+            Trusted by 1,000+ businesses across industries
+          </motion.p>
+        </div>
+
+        {/* Infinite Scrolling Carousel */}
+        <div className="relative">
+          {/* Gradient Overlays */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+          {/* Scrolling Container */}
+          <div className="flex overflow-hidden">
+            <motion.div 
+              animate={{ x: [0, -1920] }}
+              transition={{ 
+                duration: 50, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+              className="flex items-center gap-16 py-8 px-8 shrink-0"
+            >
+              {[...brands, ...brands, ...brands].map((brand, i) => (
+                <motion.div 
+                  key={i}
+                  whileHover={{ scale: 1.1 }}
+                  className="flex items-center justify-center w-40 h-24 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer group px-6"
+                >
+                  <img 
+                    src={brand.logo} 
+                    alt={brand.name} 
+                    className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-500" 
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Second Row - Reverse Direction */}
+          <div className="flex overflow-hidden mt-6">
+            <motion.div 
+              animate={{ x: [-1920, 0] }}
+              transition={{ 
+                duration: 50, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+              className="flex items-center gap-16 py-8 px-8 shrink-0"
+            >
+              {[...brands, ...brands, ...brands].reverse().map((brand, i) => (
+                <motion.div 
+                  key={i}
+                  whileHover={{ scale: 1.1 }}
+                  className="flex items-center justify-center w-40 h-24 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer group px-6"
+                >
+                  <img 
+                    src={brand.logo} 
+                    alt={brand.name} 
+                    className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-500" 
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div className="container mx-auto px-6 mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            {[
+              { number: "1000+", label: "Companies" },
+              { number: "50M+", label: "Labels Printed" },
+              { number: "99.8%", label: "Satisfaction Rate" },
+              { number: "24/7", label: "Support" }
+            ].map((stat, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-3xl lg:text-4xl font-black text-blue-600 mb-2">{stat.number}</div>
+                <div className="text-xs font-black uppercase tracking-wider text-slate-400">{stat.label}</div>
+              </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
